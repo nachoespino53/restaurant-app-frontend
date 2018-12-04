@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Order from '../components/Order';
 
-const OrdersContainers = ({orders}) => {
+const OrdersContainers = ({orders, showModal}) => {
         return (
             <React.Fragment>
-                {orders.map(order => <Order order = {order} />)}
+                {orders.map(order => <Order order = {order} showModal = {showModal} />)}
             </React.Fragment>
         )
 }
