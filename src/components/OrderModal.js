@@ -23,20 +23,28 @@ const OrderModal = ({order, hideModal, items}) => {
                 </header>
                 <section className="modal-card-body">
                     <table className="table">
+                        <thead>
                         <tr>
                             <th>Item</th>
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Total</th>
                         </tr>
+                        </thead>
+                        <tfoot>
+                            <th></th>
+                            <th></th>
+                            <th>Total</th>
+                            <th>{order.total}</th>
+                        </tfoot>
                         <tbody>
                             {order.order_items.map(item => renderRow(items, item))}
                         </tbody>
                     </table>
                 </section>
                 <footer className="modal-card-foot">
-                    <button className="button is-success">Save changes</button>
-                    <button className="button" onClick={hideModal} >Cancel</button>
+                    <button className="button">Edit</button>
+                    <button className="button" onClick={hideModal} >Close</button>
                 </footer>
             </div>
         </div> 
