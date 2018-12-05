@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import NavBar from './containers/NavBar';
 import OrdersContainer from './containers/OrdersContainer';
-import OrderModal from './components/OrderModal'
+import OrderModal from './components/OrderModal';
+import MenuBar from './components/MenuBar'
 
 export default class App extends Component {
 
@@ -53,8 +54,9 @@ export default class App extends Component {
         <br />
       <NavBar />
       <br/>
+      <br/>
       <div className="columns is-variable is-5">
-          <div className="column  has-background-grey-lighter"></div>
+          <div className="column  has-background-grey-lighter"><MenuBar /></div>
           <div className="column is-half  has-background-grey-lighter"> 
           <OrdersContainer  orders = {this.state.orders}
                             showModal = {this.showModal}
