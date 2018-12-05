@@ -12,6 +12,7 @@ export default class App extends Component {
     this.state = {
       orders: [],
       items: [],
+      categories: [],
       showModal: false
     }
   };
@@ -19,6 +20,7 @@ export default class App extends Component {
   componentDidMount() {
     this.fetchOrders();
     this.fetchItems();
+    this.fetchCategories();
   };
 
   ordersURL = () => "http://localhost:3000/orders";
@@ -38,7 +40,22 @@ export default class App extends Component {
     .catch(error => console.warn("Failed to fetch items"))
   };
 
-  showModal = id => {
+  fetchCategories = () => {
+    this.setState({
+      categories: [
+        {name: "appetizer"},
+        {name: "sandwich"},
+        {name: "pasta"},
+        {name: "dinner"},
+        {name: "pizza"},
+        {name: 'kids'},
+        {name: "beverage"},
+        {name: "dessert"},
+        {name: "non-italian"}]
+    })
+  }
+
+  showModal = (id) => {
     let order = this.state.orders.find(order => order.id === id);
     this.setState({showModal: order});
   }
@@ -55,7 +72,7 @@ export default class App extends Component {
       <br/>
       <br/>
       <div className="columns is-variable is-5">
-          <div className="column  has-background-grey-lighter"><MenuBar /></div>
+          <div className="column  has-background-grey-lighter"><MenuBar categories = {this.state.categories}/></div>
           <div className="column is-half  has-background-grey-lighter"> 
           <OrdersContainer  orders = {this.state.orders}
                             showModal = {this.showModal}

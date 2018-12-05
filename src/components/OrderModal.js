@@ -24,18 +24,20 @@ const OrderModal = ({order, hideModal, items}) => {
                 <section className="modal-card-body">
                     <table className="table">
                         <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Total</th>
-                        </tr>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
                         </thead>
                         <tfoot>
-                            <th></th>
-                            <th></th>
-                            <th>Total</th>
-                            <th>{order.total}</th>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Total:</th>
+                                <th>{order.total ? order.total : null}</th>
+                            </tr>
                         </tfoot>
                         <tbody>
                             {order.order_items.map(item => renderRow(items, item))}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const MenuBar = () => {
+const MenuBar = ({categories}) => {
   return (
       <aside className="menu">
           <p className="menu-label">General</p>
@@ -9,36 +9,17 @@ const MenuBar = () => {
                   <a href='/'>Dashboard</a>
               </li>
               <li>
-                  <a href='/'>Customers</a>
+                  <a href='/'>Orders</a>
               </li>
           </ul>
-          <p className="menu-label">Administration</p>
-          <ul className="menu-list">
-              <li>
-                  <a href='/'>Team Settings</a>
-              </li>
-              <li>
-                  <a className="" href='/'>Manage Your Team</a>
-                  <ul>
-                      <li>
-                          <a href='/'>Members</a>
-                      </li>
-                      <li>
-                          <a href='/'>Plugins</a>
-                      </li>
-                      <li>
-                          <a href='/'>Add a member</a>
-                      </li>
-                  </ul>
-              </li>
-              <li>
-                  <a href='/'>Invitations</a>
-              </li>
-
-              <li>
-                  <a href='/'>Authentication</a>
-              </li>
-          </ul>
+          <p className="menu-label">Order Management</p>
+            <ul className="menu-list">
+                <li><a href='/'>Search</a></li>
+            </ul>
+          <p className="menu-label">Item Management</p>
+            <ul className="menu-list">
+                {categories.map(category => <li><a href='/'>{category.name[0].toUpperCase() + category.name.slice(1)}</a></li>)}
+            </ul>
           <p className="menu-label">Transactions</p>
           <ul className="menu-list">
               <li>

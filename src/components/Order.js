@@ -7,7 +7,7 @@ const Order = ({ order, showModal }) => {
                 <p className="is-small">{`Order: ${order.id}`}</p>
                 <p className="is-small">{`Name: ${order.first_name} ${order.last_name}`}</p>
                 <a className="button is-rounded" href='/'>Finalize</a>
-                <a className="button is-rounded" onClick={event => showModal(order.id)} href='/'> Details</a>
+                <button className="button is-rounded" onClick={event => showModal(order.id)}> Details</button>
             </div>
         </div> 
     )
