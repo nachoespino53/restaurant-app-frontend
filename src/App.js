@@ -43,15 +43,15 @@ export default class App extends Component {
   fetchCategories = () => {
     this.setState({
       categories: [
-        {name: "appetizer"},
-        {name: "sandwich"},
-        {name: "pasta"},
-        {name: "dinner"},
-        {name: "pizza"},
-        {name: 'kids'},
-        {name: "beverage"},
-        {name: "dessert"},
-        {name: "non-italian"}]
+        {name: "appetizer", id: 1},
+        {name: "sandwich", id: 2},
+        {name: "pasta", id: 3},
+        {name: "dinner", id: 4},
+        {name: "pizza", id: 5},
+        {name: 'kids', id: 6},
+        {name: "beverage", id: 7},
+        {name: "dessert", id: 8},
+        {name: "non-italian",id: 9}]
     })
   }
 

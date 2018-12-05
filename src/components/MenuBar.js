@@ -18,7 +18,7 @@ const MenuBar = ({categories}) => {
             </ul>
           <p className="menu-label">Item Management</p>
             <ul className="menu-list">
-                {categories.map(category => <li><a href='/'>{category.name[0].toUpperCase() + category.name.slice(1)}</a></li>)}
+                {categories.map(category => <li key = {category.id}><a href='/'>{category.name[0].toUpperCase() + category.name.slice(1)}</a></li>)}
             </ul>
           <p className="menu-label">Transactions</p>
           <ul className="menu-list">
