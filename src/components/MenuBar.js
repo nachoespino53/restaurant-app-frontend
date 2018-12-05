@@ -9,7 +9,7 @@ const MenuBar = ({categories}) => {
                   <a href='/'>Dashboard</a>
               </li>
               <li>
-                  <a href='/'>Orders</a>
+                  <a className = "is-active" href='/'>Orders</a>
               </li>
           </ul>
           <p className="menu-label">Order Management</p>
