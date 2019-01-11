@@ -5,6 +5,8 @@ import OrdersContainer from './containers/OrdersContainer';
 import OrderModal from './components/OrderModal';
 import MenuBar from './components/MenuBar'
 
+const backendAPI = () => "http://100.26.186.217:3000"
+
 export default class App extends Component {
 
   constructor () {
@@ -23,8 +25,8 @@ export default class App extends Component {
     this.fetchCategories();
   };
 
-  ordersURL = () => "http://localhost:3000/orders";
-  itemsURL = () => "http://localhost:3000/items";
+  ordersURL = () => `${backendAPI()}/orders`;
+  itemsURL = () => `${backendAPI()}/items`;
 
   fetchOrders = () => {
     fetch(this.ordersURL())
