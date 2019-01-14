@@ -1,9 +1,16 @@
+// React
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+// CSS --Eliminate
 import './App.css';
+
+// Components
 import NavBar from './containers/NavBar';
 import OrdersContainer from './containers/OrdersContainer';
 import OrderModal from './components/OrderModal';
-import MenuBar from './components/MenuBar'
+import MenuBar from './components/MenuBar';
+import Login from './components/Login';
 
 const backendAPI = () => "http://100.26.186.217:3000"
 
@@ -68,24 +75,27 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <br />
-      <NavBar />
-      <br/>
-      <br/>
-      <div className="columns is-variable is-5">
-          <div className="column  has-background-grey-lighter"><MenuBar categories = {this.state.categories}/></div>
-          <div className="column is-half  has-background-grey-lighter"> 
-          <OrdersContainer  orders = {this.state.orders}
-                            showModal = {this.showModal}
-                            hideModal = {this.hideModal} /> 
-          </div>
-          <div className="column  has-background-grey-lighter"></div>
-      </div>
-        { this.state.showModal ? <OrderModal  order = {this.state.showModal} 
-                                              hideModal = {this.hideModal} 
-                                              items = {this.state.items} /> : null}
-      </div>
+      <Router>
+        <React.Fragment>
+          <br />
+        <NavBar />
+        <br/>
+        <br/>
+        <Route exact path="/" component={Login}/>
+        {/* <div className="columns is-variable is-5">
+            <div className="column  has-background-grey-lighter"><MenuBar categories = {this.state.categories}/></div>
+            <div className="column is-half  has-background-grey-lighter"> 
+            <OrdersContainer  orders = {this.state.orders}
+                              showModal = {this.showModal}
+                              hideModal = {this.hideModal} /> 
+            </div>
+            <div className="column  has-background-grey-lighter"></div>
+        </div>
+          { this.state.showModal ? <OrderModal  order = {this.state.showModal} 
+                                                hideModal = {this.hideModal} 
+                                                items = {this.state.items} /> : null} */}
+        </React.Fragment>
+      </Router>
     );
   }
 }
