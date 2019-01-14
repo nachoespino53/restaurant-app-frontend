@@ -5,7 +5,19 @@ export default class Login extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        loggedIn: false
+    }
+
+    credentials = () => {
+        return {
+            username: this.state.username, 
+            password: this.state.password
+        }
+    }
+
+    componentDidMount () {
+        this.checkForToken();
     }
 
     handleSubmit = event => {
@@ -17,14 +29,13 @@ export default class Login extends Component {
         this.setState({[event.target.name]: event.target.value})
     };
 
-    // Fetch call to API
+    // Fetch calls to API
 
     fetchLogin = () => {
-        console.log(this.state)
         fetch(`${backendAPI()}/api/v1/login`, {
             method: "POST",
             headers: {"Accept": "application/json", "Content-Type": "application/json"},
-            body: JSON.stringify({user: this.state})
+            body: JSON.stringify({user: this.credentials()})
         }).then(res => res.json())
         .then(json => {
             if(json.jwt) {
@@ -33,6 +44,16 @@ export default class Login extends Component {
         })
         .catch(error => console.error(error))
     };
+
+    checkForToken = () => {
+        let token = localStorage.getItem("token");
+        if (token) {
+            fetch(`${backendAPI()}/api/v1/profile`, {headers: {Authorization: `Bearer ${token}`}})
+            .then(res => res.json())
+            .then(console.log)
+            .catch(error => console.error(error))
+        }
+    }
 
     errorCheck = () => {
 
