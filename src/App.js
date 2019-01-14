@@ -13,7 +13,7 @@ import OrderModal from './components/OrderModal';
 import MenuBar from './components/MenuBar';
 import Login from './components/Login';
 
-const backendAPI = () => "http://100.26.186.217:3000"
+export const backendAPI = () => "http://100.26.186.217:3000"
 
 export default class App extends Component {
 
