@@ -1,6 +1,7 @@
 // React
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 // CSS --Eliminate
 import './App.css';
@@ -81,19 +82,25 @@ export default class App extends Component {
         <NavBar />
         <br/>
         <br/>
-        <Route exact path="/" component={Login}/>
-        {/* <div className="columns is-variable is-5">
-            <div className="column  has-background-grey-lighter"><MenuBar categories = {this.state.categories}/></div>
-            <div className="column is-half  has-background-grey-lighter"> 
-            <OrdersContainer  orders = {this.state.orders}
-                              showModal = {this.showModal}
-                              hideModal = {this.hideModal} /> 
-            </div>
-            <div className="column  has-background-grey-lighter"></div>
-        </div>
-          { this.state.showModal ? <OrderModal  order = {this.state.showModal} 
-                                                hideModal = {this.hideModal} 
-                                                items = {this.state.items} /> : null} */}
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/" render={() => {
+          return (
+            <React.Fragment>
+            <div className="columns is-variable is-5">
+              <div className="column  has-background-grey-lighter"><MenuBar categories = {this.state.categories}/></div>
+              <div className="column is-half  has-background-grey-lighter"> 
+              <OrdersContainer  orders = {this.state.orders}
+                                showModal = {this.showModal}
+                                hideModal = {this.hideModal} /> 
+              </div>
+              <div className="column  has-background-grey-lighter"></div>
+          </div>
+            { this.state.showModal ? <OrderModal  order = {this.state.showModal} 
+            hideModal = {this.hideModal} 
+            items = {this.state.items} /> : null}
+            </React.Fragment>
+            )
+        }} />
         </React.Fragment>
       </Router>
     );
