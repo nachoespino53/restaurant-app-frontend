@@ -7,6 +7,15 @@ export default class Login extends Component {
         password: ""
     }
 
+    handleSubmit = event => {
+        event.preventDefault();
+    };
+
+    handleChange = event => {
+        this.setState({[event.target.name]: event.target.value})
+    };
+
+
     render () {
         return (
             <section className="hero is-fullheight">
@@ -16,24 +25,37 @@ export default class Login extends Component {
                             <div className="box">
                                 <h3 className="title has-text-grey">Login</h3>
                                 <p className="subtitle has-text-grey">Please login to proceed.</p>
-                                    <form>
+                                    <form onSubmit={this.handleSubmit}>
                                         <div className="field">
                                             <div className="control">
-                                                <input className="input is-large" type="email" placeholder="Your Email" autoFocus="" />
+                                                <input className="input"
+                                                name="username"
+                                                type="text"
+                                                placeholder="Username"
+                                                value={this.state.username}
+                                                onChange={this.handleChange}
+                                                required
+                                                autoFocus/>
                                             </div>
                                         </div>
 
-                                            <div className="field">
-                                                <div className="control">
-                                                    <input className="input is-large" type="password" placeholder="Your Password" />
-                                                </div>
-                                                </div>
-                                                <div className="field">
-                                                    <label className="checkbox">
-                                                        <input type="checkbox" /> Remember me
-                                                    </label>
-                                                </div>
-                                                    <button className="button is-block is-info is-large is-fullwidth">Login</button>
+                                        <div className="field">
+                                            <div className="control">
+                                                <input className="input"
+                                                name='password'
+                                                type="password"
+                                                placeholder="Password"
+                                                onChange={this.handleChange}
+                                                value={this.state.password}
+                                                required />
+                                            </div>
+                                        </div>
+                                        <div className="field">
+                                            <label className="checkbox">
+                                                <input type="checkbox" /> Remember me
+                                            </label>
+                                        </div>
+                                        <button type="submit" className="button is-block is-info is-fullwidth">Login</button>
                                     </form>
                             </div>
                                         </div>

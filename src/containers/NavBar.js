@@ -1,50 +1,51 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import Logo from "../imgs/capozio_logo.png";
 
 const NavBar = () => {
   return (
     <nav className="navbar background-red is-fixed-top" role="navigation" aria-label="main navigation">
     <div className="navbar-brand">
-        <a className="navbar-item" href="http://www.capozios.com" >
-        <img src={Logo}  height="50" alt = "capozio's-logo"/>
-        </a>
+        <Link className="navbar-item" to="/" >
+            <img src={Logo}  height="50" alt = "capozio's-logo"/>
+        </Link>
 
-        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" href='/'>
+        <div role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
-        </a>
+        </div>
     </div>
 
     <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-        <a className="navbar-item" href='/'>
+        <Link className="navbar-item" to='/'>
             Home
-        </a>
+        </Link>
 
-        <a className="navbar-item" href='/'>
+        <Link className="navbar-item" to='/'>
             Option 1
-        </a>
+        </Link>
 
         <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" href='/'>
+            <Link className="navbar-link" to='/'>
             dropdown
-            </a>
+            </Link>
 
             <div className="navbar-dropdown">
-            <a className="navbar-item" href='/'>
+            <Link className="navbar-item" to='/'>
                 About
-            </a>
-            <a className="navbar-item" href='/'>
+            </Link>
+            <Link className="navbar-item" to='/'>
                 Options
-            </a>
-            <a className="navbar-item" href='/'>
+            </Link>
+            <Link className="navbar-item" to='/'>
                 Contact
-            </a>
+            </Link>
             <hr className="navbar-divider" />
-            <a className="navbar-item" href='/'>
+            <Link className="navbar-item" to='/'>
                 Report an issue
-            </a>
+            </Link>
             </div>
         </div>
         </div>
@@ -52,12 +53,12 @@ const NavBar = () => {
         <div className="navbar-end">
         <div className="navbar-item">
             <div className="buttons">
-            <a className="button is-light" href='/'>
+            <Link className="button is-light" to='/'>
                 Orders
-            </a>
-            <a className="button is-light" href='/'>
+            </Link>
+            <Link className="button is-light" to='/login'>
                 Log in
-            </a>
+            </Link>
             </div>
         </div>
         </div>
