@@ -6,7 +6,8 @@ export default class Login extends Component {
     state = {
         username: "",
         password: "",
-        loggedIn: false
+        loggedIn: false,
+        message: false
     }
 
     credentials = () => {
@@ -40,9 +41,12 @@ export default class Login extends Component {
         .then(json => {
             if(json.jwt) {
                 localStorage.setItem("token", json.jwt)
+            } else if (json.message) {
+                this.setState({message: json.message})
+                this.errorCheck();
             }
         })
-        .catch(error => console.error(error))
+        .catch(error => console.log(error))
     };
 
     checkForToken = () => {
@@ -51,13 +55,20 @@ export default class Login extends Component {
             fetch(`${backendAPI()}/api/v1/profile`, {headers: {Authorization: `Bearer ${token}`}})
             .then(res => res.json())
             .then(console.log)
-            .catch(error => console.error(error))
+            .catch(error => console.log(error))
         }
     }
 
     errorCheck = () => {
-
-    };
+        try {
+            let username = document.getElementById("inputUsername");
+            let password = document.getElementById("inputPassword")
+            username.classList.add("is-danger");
+            password.classList.add("is-danger");
+          } catch {
+            console.log("Error in login.js #errorCheck")
+          }
+    }
 
     render () {
         return (
@@ -69,6 +80,7 @@ export default class Login extends Component {
                             <div className="box">
                                 <h3 className="title has-text-grey">Login</h3>
                                 <p className="subtitle has-text-grey">Please login to proceed.</p>
+                                {this.state.message ? <p className=" subtitle is-6 has-text-left has-text-danger">{this.state.message}</p> : null}
                                 {/* Login Form */}
                                 <form onSubmit={this.handleSubmit}>
                                 {/* Username */}
