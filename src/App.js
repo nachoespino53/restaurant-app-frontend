@@ -1,7 +1,7 @@
 // React
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 
 // CSS --Eliminate
 import './App.css';
